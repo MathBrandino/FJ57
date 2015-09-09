@@ -18,7 +18,7 @@
                 android:layout_height="200dp"
                 android:id="@+id/formulario_foto"
                 android:src="@drawable/user"
-                android:background="#3289ff"/>
+                android:backgroundTint="#3289ff"/>
 
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"

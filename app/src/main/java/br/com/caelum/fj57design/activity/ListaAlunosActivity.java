@@ -11,7 +11,9 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import br.com.caelum.fj57design.Dao.AlunoDao;
 import br.com.caelum.fj57design.R;
+import br.com.caelum.fj57design.adapter.AlunoAdapter;
 import br.com.caelum.fj57design.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
@@ -45,6 +47,21 @@ public class ListaAlunosActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_lista_alunos, menu);
         return true;
+    }
+
+    private void carregaLista(){
+        AlunoDao dao = new AlunoDao(this);
+        alunos = dao.pegaAlunos();
+        dao.close();
+
+        AlunoAdapter adapter = new AlunoAdapter(this, alunos);
+        listaAlunos.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaLista();
     }
 
     @Override

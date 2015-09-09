@@ -67,10 +67,13 @@ public class FormularioHelper {
 
     }
 
+    public FloatingActionButton getCamera() {
+        return camera;
+    }
+
     public void carregaFoto(String caminhoFoto) {
 
         Bitmap bm = BitmapFactory.decodeFile(caminhoFoto);
-        bm = Bitmap.createScaledBitmap(bm, 200, 200, true );
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         foto.setImageBitmap(bm);
         foto.setTag(caminhoFoto);
