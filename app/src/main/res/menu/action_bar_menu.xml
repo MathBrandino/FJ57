@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Deletar"
+        android:id="@+id/menu_deletar"
+        app:showAsAction="always"/>
+
+    <item android:title="Mapa"
+        android:id="@+id/menu_mapa"
+        app:showAsAction="always"/>
+
+    <group >
+
+        <item android:title="Ligar"
+            android:id="@+id/menu_ligar"/>
+        <item android:title="Mensagem"
+            android:id="@+id/menu_mensagem"/>
+        <item android:title="Site"
+            android:id="@+id/menu_site"/>
+
+    </group>
+
+
+</menu>

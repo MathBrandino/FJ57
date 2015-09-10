@@ -16,6 +16,7 @@ import java.util.List;
 import br.com.caelum.fj57design.Dao.AlunoDao;
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.adapter.AlunoAdapter;
+import br.com.caelum.fj57design.asynctask.EnviaDadosServidor;
 import br.com.caelum.fj57design.contextActionBar.ContextActionBar;
 import br.com.caelum.fj57design.modelo.Aluno;
 
@@ -65,9 +66,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno aluno = (Aluno) parent.getItemAtPosition(position);
 
-                ContextActionBar actionBar = new ContextActionBar();
+                ContextActionBar actionBar = new ContextActionBar(ListaAlunosActivity.this, aluno);
 
-                ListaAlunosActivity.this.startSupportActionMode(actionBar);
+                startSupportActionMode(actionBar);
                 return true;
             }
         });
@@ -81,7 +82,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         return true;
     }
 
-    private void carregaLista(){
+    public void carregaLista(){
         AlunoDao dao = new AlunoDao(this);
         alunos = dao.pegaAlunos();
         dao.close();
@@ -104,8 +105,22 @@ public class ListaAlunosActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+
+        switch (id){
+
+            case R.id.menu_prova :
+
+                return false;
+
+            case R.id.menu_media:
+                    new EnviaDadosServidor(this).execute();
+
+                return false;
+
+            case R.id.menu_lista_mapa:
+
+                return false;
+
         }
 
         return super.onOptionsItemSelected(item);

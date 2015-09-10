@@ -49,6 +49,7 @@ public class FormularioHelper {
         aluno.setSite(site.getText().toString());
         aluno.setTelefone(telefone.getText().toString());
         aluno.setCaminhoFoto((String) foto.getTag());
+        aluno.setNota(nota.getRating());
 
         return aluno;
     }

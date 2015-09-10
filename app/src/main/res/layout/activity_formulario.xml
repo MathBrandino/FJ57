@@ -6,6 +6,8 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -55,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Telefone"
+                android:inputType="number"
                 android:id="@+id/formulario_telefone"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -79,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Site"
+                android:inputType="textEmailAddress"
                 android:id="@+id/formulario_site"/>
 
         </android.support.design.widget.TextInputLayout>

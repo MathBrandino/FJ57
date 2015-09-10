@@ -3,6 +3,8 @@
     package="br.com.caelum.fj57design" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -20,7 +22,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.FormularioActivity"/>
+        <activity android:name=".activity.FormularioActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
 
         <receiver android:name=".receiver.SMSReceiver" android:enabled="true">
             <intent-filter>
