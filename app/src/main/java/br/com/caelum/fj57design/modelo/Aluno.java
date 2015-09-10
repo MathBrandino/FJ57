@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Aluno implements Serializable{
 
-    private long id;
+    private Long id;
     private String nome;
     private String telefone;
     private String site;
@@ -15,11 +15,11 @@ public class Aluno implements Serializable{
     private double nota;
     private String caminhoFoto;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

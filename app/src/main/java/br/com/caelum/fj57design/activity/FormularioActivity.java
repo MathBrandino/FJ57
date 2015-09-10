@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import br.com.caelum.fj57design.Dao.AlunoDao;
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.camera.IniciadorCamera;
 import br.com.caelum.fj57design.helper.FormularioHelper;
@@ -56,6 +59,32 @@ public class FormularioActivity extends AppCompatActivity {
                 helper.carregaFoto(caminhoFoto);
             }
         }
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem salvar = menu.add("Salvar");
+        salvar.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        salvar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Aluno aluno = helper.pegaAlunoFormulario();
+                if (helper.validaNome()) {
+                    AlunoDao dao = new AlunoDao(FormularioActivity.this);
+
+                    if (aluno.getId() == null) {
+                        dao.insere(aluno);
+                    } else {
+                        dao.altera(aluno);
+                    }
+                    dao.close();
+                    finish();
+                }
+
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

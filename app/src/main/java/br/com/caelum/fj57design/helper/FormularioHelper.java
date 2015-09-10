@@ -3,6 +3,7 @@ package br.com.caelum.fj57design.helper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputLayout;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -78,5 +79,19 @@ public class FormularioHelper {
         foto.setImageBitmap(bm);
         foto.setTag(caminhoFoto);
 
+    }
+
+    private void mostraErroNome(){
+        TextInputLayout inputLayout = (TextInputLayout) nome.getParent();
+        inputLayout.setError("Nome não pode estar vazio ");
+    }
+
+    public boolean validaNome(){
+        if (nome.getText().toString().trim().isEmpty()){
+            mostraErroNome();
+            return false;
+        } else {
+            return true;
+        }
     }
 }

@@ -25,7 +25,8 @@ public class SMSReceiver extends BroadcastReceiver {
 
         byte[] pdu = (byte[]) pdus[0];
 
-        SmsMessage sms = SmsMessage.createFromPdu(pdu, null);
+        String format = (String) intent.getSerializableExtra("format");
+        SmsMessage sms = SmsMessage.createFromPdu(pdu, format);
 
         String telefone = sms.getOriginatingAddress();
 
