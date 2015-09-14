@@ -57,27 +57,32 @@ public class ProvasFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Prova prova = (Prova) listaProvas.getItemAtPosition(position);
 
-                Bundle arguments = new Bundle();
-                arguments.putSerializable("prova", prova);
-
-                DetalhesFragment detalhesFragment = new DetalhesFragment();
-                detalhesFragment.setArguments(arguments);
-                ProvasActivity activity = (ProvasActivity) getActivity();
-
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-                if (activity.isTablet()) {
-                    transaction.replace(R.id.frame_provas_detalhada, detalhesFragment);
-                    transaction.commit();
-                } else {
-                    transaction.replace(R.id.frame_provas, detalhesFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-                }
+                mudaFragment(prova);
             }
         });
 
         return view;
 
+    }
+
+    private void mudaFragment(Prova prova) {
+
+        Bundle arguments = new Bundle();
+        arguments.putSerializable("prova", prova);
+
+        DetalhesFragment detalhesFragment = new DetalhesFragment();
+        detalhesFragment.setArguments(arguments);
+        ProvasActivity activity = (ProvasActivity) getActivity();
+
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+        if (activity.isTablet()) {
+            transaction.replace(R.id.frame_provas_detalhada, detalhesFragment);
+            transaction.commit();
+        } else {
+            transaction.replace(R.id.frame_provas, detalhesFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
     }
 }
