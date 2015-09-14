@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
-    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:layout_height="match_parent">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="220dp">
 
             <ImageView
+                android:id="@+id/formulario_foto"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/formulario_foto"
-                android:src="@drawable/user"
-                android:backgroundTint="#3289ff"/>
+                android:backgroundTint="#3289ff"
+                android:src="@drawable/user" />
 
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/formulario_foto_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/formulario_foto_camera"
-                app:fabSize="normal"
-                android:src="@drawable/camera"
-                app:backgroundTint="#FF0000"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                />
+                android:src="@drawable/camera"
+                app:backgroundTint="#FF0000"
+                app:fabSize="normal" />
 
         </RelativeLayout>
 
@@ -42,10 +42,10 @@
             app:errorEnabled="true">
 
             <EditText
+                android:id="@+id/formulario_nome"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Nome"
-                android:id="@+id/formulario_nome"/>
+                android:hint="Nome" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -54,11 +54,11 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/formulario_telefone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Telefone"
-                android:inputType="number"
-                android:id="@+id/formulario_telefone"/>
+                android:inputType="number" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -67,10 +67,10 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/formulario_endereco"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/formulario_endereco"
-                android:hint="Endereço"/>
+                android:hint="Endereço" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -79,20 +79,21 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/formulario_site"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Site"
-                android:inputType="textEmailAddress"
-                android:id="@+id/formulario_site"/>
+                android:inputType="textEmailAddress" />
 
         </android.support.design.widget.TextInputLayout>
 
         <RatingBar
+            android:id="@+id/formulario_nota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:numStars="5"
             android:layout_gravity="center"
-            android:id="@+id/formulario_nota"/>
+            android:numStars="5"
+            android:stepSize="2" />
 
     </LinearLayout>
 </ScrollView>

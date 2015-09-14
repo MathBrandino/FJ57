@@ -19,9 +19,9 @@ import br.com.caelum.fj57design.modelo.Aluno;
  */
 public class FormularioActivity extends AppCompatActivity {
 
+    private static int CODE = 123;
     private FormularioHelper helper;
     private FloatingActionButton camera;
-    private static int CODE = 123;
     private String caminhoFoto;
 
     @Override

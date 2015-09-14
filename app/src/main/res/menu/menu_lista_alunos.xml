@@ -1,15 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".ListaAlunosActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ListaAlunosActivity">
 
-    <item android:id="@+id/menu_prova"
+    <item
+        android:id="@+id/menu_prova"
         android:title="Provas"
-        app:showAsAction="always"/>
-    <item android:title="Media"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_media"
-        app:showAsAction="always"/>
-    <item android:title="Mapa"
+        android:title="Media"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/menu_lista_mapa"
-        app:showAsAction="ifRoom"/>
+        android:title="Mapa"
+        app:showAsAction="ifRoom" />
 
 </menu>

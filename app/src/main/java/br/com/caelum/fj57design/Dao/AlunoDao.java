@@ -44,13 +44,13 @@ public class AlunoDao extends SQLiteOpenHelper {
 
     }
 
-    public List<Aluno> pegaAlunos(){
+    public List<Aluno> pegaAlunos() {
         List<Aluno> alunos = new ArrayList<>();
 
         String sql = "Select * from " + TABELA + " ;";
         Cursor cursor = getWritableDatabase().rawQuery(sql, null);
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Aluno aluno = new Aluno();
 
             aluno.setId(cursor.getLong(cursor.getColumnIndex("id")));
@@ -67,7 +67,7 @@ public class AlunoDao extends SQLiteOpenHelper {
         return alunos;
     }
 
-    public void insere(Aluno aluno){
+    public void insere(Aluno aluno) {
         ContentValues values = new ContentValues();
 
         values.put("nome", aluno.getNome());
@@ -80,7 +80,7 @@ public class AlunoDao extends SQLiteOpenHelper {
         getWritableDatabase().insert(TABELA, null, values);
     }
 
-    public void altera(Aluno aluno){
+    public void altera(Aluno aluno) {
 
         ContentValues values = new ContentValues();
 
@@ -95,18 +95,18 @@ public class AlunoDao extends SQLiteOpenHelper {
         getWritableDatabase().update(TABELA, values, "id=?", id);
     }
 
-    public void deleta(Aluno aluno){
+    public void deleta(Aluno aluno) {
         String[] id = {String.valueOf(aluno.getId())};
         getWritableDatabase().delete(TABELA, "id=?", id);
     }
 
     public boolean isAluno(String telefone) {
-        String sql  = " Select * from " + TABELA + " where telefone = ?";
+        String sql = " Select * from " + TABELA + " where telefone = ?";
 
-        String[] args = { telefone };
+        String[] args = {telefone};
         Cursor cursor = getReadableDatabase().rawQuery(sql, args);
 
-        if (cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             return true;
         }
 

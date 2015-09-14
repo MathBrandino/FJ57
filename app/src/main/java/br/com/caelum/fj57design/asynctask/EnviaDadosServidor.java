@@ -5,9 +5,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.List;
 
 import br.com.caelum.fj57design.Dao.AlunoDao;
@@ -41,7 +38,6 @@ public class EnviaDadosServidor extends AsyncTask<String, Void, String> {
         super.onPostExecute(s);
 
         progressDialog.dismiss();
-
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
     }
 

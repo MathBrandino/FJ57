@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.telephony.SmsMessage;
 
-import java.io.Serializable;
-
 import br.com.caelum.fj57design.Dao.AlunoDao;
 import br.com.caelum.fj57design.R;
 
@@ -32,7 +30,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
         AlunoDao dao = new AlunoDao(context);
 
-        if(dao.isAluno(telefone)){
+        if (dao.isAluno(telefone)) {
             MediaPlayer player = MediaPlayer.create(context, R.raw.hangouts_incoming_call);
             player.start();
         }

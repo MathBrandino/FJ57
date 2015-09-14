@@ -39,9 +39,9 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
     @Override
     public boolean onActionItemClicked(android.support.v7.view.ActionMode mode, MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
-            case R.id.menu_deletar :
+            case R.id.menu_deletar:
 
                 AlunoDao dao = new AlunoDao(activity);
                 dao.deleta(aluno);
@@ -50,7 +50,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
 
                 return false;
 
-            case R.id.menu_mapa :
+            case R.id.menu_mapa:
 
                 Intent mapa = new Intent(Intent.ACTION_VIEW);
 
@@ -72,7 +72,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 Intent mensagem = new Intent(Intent.ACTION_SEND);
                 mensagem.setType("text/*");
                 mensagem.putExtra(Intent.EXTRA_SUBJECT, "APP Caelum");
-                mensagem.putExtra(Intent.EXTRA_TEXT, "Sua nota é :"+ aluno.getNota());
+                mensagem.putExtra(Intent.EXTRA_TEXT, "Sua nota é :" + aluno.getNota());
                 item.setIntent(Intent.createChooser(mensagem, "Escolha por gentileza"));
 
                 return false;

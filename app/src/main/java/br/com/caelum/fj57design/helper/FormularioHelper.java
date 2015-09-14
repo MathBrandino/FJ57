@@ -42,7 +42,7 @@ public class FormularioHelper {
         aluno = new Aluno();
     }
 
-    public Aluno pegaAlunoFormulario(){
+    public Aluno pegaAlunoFormulario() {
 
         aluno.setNome(nome.getText().toString());
         aluno.setEndereco(endereco.getText().toString());
@@ -54,7 +54,7 @@ public class FormularioHelper {
         return aluno;
     }
 
-    public void colocaAlunoFormulario(Aluno  aluno){
+    public void colocaAlunoFormulario(Aluno aluno) {
         this.aluno = aluno;
 
         nome.setText(aluno.getNome());
@@ -82,13 +82,13 @@ public class FormularioHelper {
 
     }
 
-    private void mostraErroNome(){
+    private void mostraErroNome() {
         TextInputLayout inputLayout = (TextInputLayout) nome.getParent();
         inputLayout.setError("Nome não pode estar vazio ");
     }
 
-    public boolean validaNome(){
-        if (nome.getText().toString().trim().isEmpty()){
+    public boolean validaNome() {
+        if (nome.getText().toString().trim().isEmpty()) {
             mostraErroNome();
             return false;
         } else {

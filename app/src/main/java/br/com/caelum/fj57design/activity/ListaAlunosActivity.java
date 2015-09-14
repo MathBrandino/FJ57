@@ -1,10 +1,10 @@
 package br.com.caelum.fj57design.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,7 +82,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         return true;
     }
 
-    public void carregaLista(){
+    public void carregaLista() {
         AlunoDao dao = new AlunoDao(this);
         alunos = dao.pegaAlunos();
         dao.close();
@@ -106,14 +106,40 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
-        switch (id){
+        switch (id) {
 
-            case R.id.menu_prova :
+            case R.id.menu_prova:
+                Intent provas = new Intent(this, ProvasActivity.class);
+                startActivity(provas);
 
                 return false;
 
             case R.id.menu_media:
-                    new EnviaDadosServidor(this).execute();
+
+                new EnviaDadosServidor(this).execute(); // MANEIRA CORRETA DE SER FEITO
+
+                /*new Thread(){
+                    @Override
+                    public void run() {
+                        AlunoDao dao = new AlunoDao(ListaAlunosActivity.this);
+                        List<Aluno> alunos = dao.pegaAlunos();
+                        dao.close();
+
+                        AlunoConverter converter = new AlunoConverter();
+
+                        String json = converter.toJson(alunos);
+
+                        WebClient webClient = new WebClient();
+
+                        String resposta = webClient.post(json);
+
+                        Log.d("Resposta", resposta);
+
+                        //Toast.makeText(ListaAlunosActivity.this, resposta, Toast.LENGTH_LONG).show(); //GERANDO A EXCEPTION !!!
+
+                    }
+                }.start();*/
+
 
                 return false;
 

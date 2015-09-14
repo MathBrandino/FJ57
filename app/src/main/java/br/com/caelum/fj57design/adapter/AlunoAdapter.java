@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,9 +47,9 @@ public class AlunoAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Aluno aluno = (Aluno) getItem(position);
-        View view ;
+        View view;
 
-        if(convertView == null){
+        if (convertView == null) {
             view = View.inflate(activity, R.layout.item, null);
         } else {
             view = convertView;

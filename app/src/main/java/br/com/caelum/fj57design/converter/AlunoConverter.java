@@ -1,7 +1,6 @@
 package br.com.caelum.fj57design.converter;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import br.com.caelum.fj57design.modelo.Aluno;
 public class AlunoConverter {
 
 
-    public String toJson(List<Aluno> alunos)  {
+    public String toJson(List<Aluno> alunos) {
 
         JSONStringer jsonStringer = new JSONStringer();
 

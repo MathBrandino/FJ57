@@ -1,14 +1,11 @@
 package br.com.caelum.fj57design.servidor;
 
-import android.util.Log;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.Scanner;
 
 /**
@@ -16,7 +13,7 @@ import java.util.Scanner;
  */
 public class WebClient {
 
-    public String post(String json)  {
+    public String post(String json) {
         try {
             URL url = new URL("https://www.caelum.com.br/mobile");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -30,7 +27,6 @@ public class WebClient {
 
             PrintStream saida = new PrintStream(connection.getOutputStream());
             saida.println(json);
-            Log.i("saida", saida.toString());
 
             connection.connect();
 

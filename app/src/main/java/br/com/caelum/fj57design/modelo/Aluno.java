@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by matheus on 09/09/15.
  */
-public class Aluno implements Serializable{
+public class Aluno implements Serializable {
 
     private Long id;
     private String nome;
@@ -63,11 +63,11 @@ public class Aluno implements Serializable{
         this.nota = nota;
     }
 
-    public void setCaminhoFoto(String caminhoFoto) {
-        this.caminhoFoto = caminhoFoto;
-    }
-
     public String getCaminhoFoto() {
         return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 }
