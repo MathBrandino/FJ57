@@ -48,7 +48,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 dao.close();
                 activity.carregaLista();
 
-                return false;
+                return true;
 
             case R.id.menu_mapa:
 
@@ -57,7 +57,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 mapa.setData(Uri.parse("geo:0,0?z=14&q=" + Uri.encode(aluno.getEndereco())));
                 item.setIntent(mapa);
 
-                return false;
+                return true;
 
             case R.id.menu_ligar:
 
@@ -65,7 +65,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 ligar.setData(Uri.parse("tel:" + aluno.getTelefone()));
                 item.setIntent(ligar);
 
-                return false;
+                return true;
 
             case R.id.menu_mensagem:
 
@@ -75,14 +75,14 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 mensagem.putExtra(Intent.EXTRA_TEXT, "Sua nota é :" + aluno.getNota());
                 item.setIntent(Intent.createChooser(mensagem, "Escolha por gentileza"));
 
-                return false;
+                return true;
 
             case R.id.menu_site:
 
                 Intent site = new Intent(Intent.ACTION_VIEW);
                 site.setData(Uri.parse("http:" + aluno.getSite()));
                 item.setIntent(site);
-                return false;
+                return true;
 
             default:
 
