@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.List;
 
 import br.com.caelum.fj57design.Dao.AlunoDao;
@@ -144,6 +145,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 return false;
 
             case R.id.menu_lista_mapa:
+                Intent intent = new Intent(this, MostraAlunoActivity.class);
+                intent.putExtra("alunos", (Serializable) alunos);
+                startActivity(intent);
 
                 return false;
 
