@@ -2,6 +2,8 @@ package br.com.caelum.fj57design.mapa;
 
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -30,6 +32,8 @@ public class Mapa extends SupportMapFragment {
             Localizador localizador = new Localizador(getActivity());
             LatLng latLng = localizador.pegaCoordenadas(aluno.getEndereco());
             map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14));
+
         }
 
     }
