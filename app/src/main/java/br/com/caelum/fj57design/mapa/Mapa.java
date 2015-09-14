@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -26,15 +27,21 @@ public class Mapa extends SupportMapFragment {
         if (getArguments() != null){
             alunos = (List<Aluno>) getArguments().getSerializable("alunos");
         }
-        GoogleMap map = getMap();
 
-        for (Aluno aluno : alunos){
-            Localizador localizador = new Localizador(getActivity());
-            LatLng latLng = localizador.pegaCoordenadas(aluno.getEndereco());
-            map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14));
+        getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap map) {
+                for (Aluno aluno : alunos){
+                    Localizador localizador = new Localizador(getActivity());
+                    LatLng latLng = localizador.pegaCoordenadas(aluno.getEndereco());
+                    map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng));
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
 
-        }
+                }
+            }
+        });
+
+
 
     }
 }
