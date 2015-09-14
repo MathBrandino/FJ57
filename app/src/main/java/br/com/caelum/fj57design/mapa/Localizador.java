@@ -21,7 +21,7 @@ public class Localizador {
         geo = new Geocoder(context, Locale.getDefault());
     }
 
-    public LatLng pegaCoordenadas(String endereco){
+    public LatLng pegaCoordenadas(String endereco) {
         try {
             List<Address> listaEnderecos;
             listaEnderecos = geo.getFromLocationName(endereco, 1);

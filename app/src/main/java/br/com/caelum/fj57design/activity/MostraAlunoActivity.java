@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.fj57design.R;
@@ -25,10 +24,10 @@ public class MostraAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
 
-        Bundle bundle  = new Bundle();
+        Bundle bundle = new Bundle();
 
         Intent intent = getIntent();
-        if (intent.hasExtra("alunos")){
+        if (intent.hasExtra("alunos")) {
             alunos = (List<Aluno>) intent.getSerializableExtra("alunos");
             bundle.putSerializable("alunos", (Serializable) alunos);
 

@@ -1,8 +1,5 @@
 package br.com.caelum.fj57design.mapa;
 
-import android.os.Bundle;
-
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -20,18 +17,19 @@ import br.com.caelum.fj57design.modelo.Aluno;
  */
 public class Mapa extends SupportMapFragment {
     private List<Aluno> alunos;
+
     @Override
     public void onResume() {
         super.onResume();
         alunos = new ArrayList<>();
-        if (getArguments() != null){
+        if (getArguments() != null) {
             alunos = (List<Aluno>) getArguments().getSerializable("alunos");
         }
 
         getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap map) {
-                for (Aluno aluno : alunos){
+                for (Aluno aluno : alunos) {
                     Localizador localizador = new Localizador(getActivity());
                     LatLng latLng = localizador.pegaCoordenadas(aluno.getEndereco());
                     map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng));
@@ -40,7 +38,6 @@ public class Mapa extends SupportMapFragment {
                 }
             }
         });
-
 
 
     }

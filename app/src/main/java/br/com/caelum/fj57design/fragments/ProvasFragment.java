@@ -37,12 +37,12 @@ public class ProvasFragment extends Fragment {
         List<Prova> provas = new ArrayList<>();
 
         Prova p1 = new Prova("Java", "07/02/2016");
-        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo","Herança", "Composição", "Encapsulamento"));
+        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo", "Herança", "Composição", "Encapsulamento"));
         Prova p2 = new Prova("Android", "08/02/2016");
         p2.setTopicos(Arrays.asList("Views", "AsyncTask", "Activity", "ClickListener", "Fragments", "Expresso"));
 
         Prova p3 = new Prova("Java para Web", "09/02/2016");
-        p3.setTopicos(Arrays.asList("Servlet", "JSF", "Unit Tests","JPA","Spring", "Hibernate"));
+        p3.setTopicos(Arrays.asList("Servlet", "JSF", "Unit Tests", "JPA", "Spring", "Hibernate"));
 
         provas.add(p1);
         provas.add(p2);
