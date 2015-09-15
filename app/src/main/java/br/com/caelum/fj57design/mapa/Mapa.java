@@ -1,11 +1,14 @@
 package br.com.caelum.fj57design.mapa;
 
+import android.graphics.Color;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +28,24 @@ public class Mapa extends SupportMapFragment {
         if (getArguments() != null) {
             alunos = (List<Aluno>) getArguments().getSerializable("alunos");
         }
+
+        final Localizador localizador = new Localizador(getActivity());
+        final LatLng[] lng = {localizador.pegaCoordenadas(alunos.get(0).getEndereco())};
+
         getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap map) {
                 for (Aluno aluno : alunos) {
-                    Localizador localizador = new Localizador(getActivity());
+
                     if(!aluno.getEndereco().trim().isEmpty()) {
                         LatLng latLng = localizador.pegaCoordenadas(aluno.getEndereco());
+                        List<LatLng> list = new ArrayList<LatLng>();
+                        list.add(latLng);
+                        list.add(lng[0]);
+                        map.addPolyline(new PolylineOptions().color(Color.BLUE).addAll(list));
                         map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng));
                         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14));
+                        lng[0] = latLng;
                     }
 
                 }
