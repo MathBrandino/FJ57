@@ -15,6 +15,11 @@ public class Aluno implements Serializable {
     private double nota;
     private String caminhoFoto;
 
+    @Override
+    public String toString() {
+        return id +" - " + nome;
+    }
+
     public Long getId() {
         return id;
     }

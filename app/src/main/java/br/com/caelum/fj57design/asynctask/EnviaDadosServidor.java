@@ -56,6 +56,8 @@ public class EnviaDadosServidor extends AsyncTask<String, Void, String> {
 
         String resposta = webClient.post(json);
 
+        //String resp = new WebClient().post(new AlunoConverter().toJson(alunos));
+
         return resposta;
     }
 }

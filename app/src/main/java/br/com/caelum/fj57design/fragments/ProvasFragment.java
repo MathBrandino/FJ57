@@ -26,6 +26,7 @@ import br.com.caelum.fj57design.modelo.Prova;
 public class ProvasFragment extends Fragment {
 
     private ListView listaProvas;
+    private Prova prova;
 
     @Nullable
     @Override
@@ -55,7 +56,7 @@ public class ProvasFragment extends Fragment {
         listaProvas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Prova prova = (Prova) listaProvas.getItemAtPosition(position);
+                prova = (Prova) listaProvas.getItemAtPosition(position);
 
                 mudaFragment(prova);
             }
@@ -64,6 +65,9 @@ public class ProvasFragment extends Fragment {
         return view;
 
     }
+
+
+
 
     private void mudaFragment(Prova prova) {
 

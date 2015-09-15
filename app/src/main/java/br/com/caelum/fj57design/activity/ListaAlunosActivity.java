@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +22,7 @@ import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.adapter.AlunoAdapter;
 import br.com.caelum.fj57design.asynctask.EnviaDadosServidor;
 import br.com.caelum.fj57design.contextActionBar.ContextActionBar;
+import br.com.caelum.fj57design.helper.BuscaHelper;
 import br.com.caelum.fj57design.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
@@ -103,11 +107,35 @@ public class ListaAlunosActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        final int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
 
         switch (id) {
+
+            case R.id.busca:
+                final View view = View.inflate(this, R.layout.buscador, null);
+                final BuscaHelper helper = new BuscaHelper(view);
+                final AlertDialog alertDialog = new AlertDialog.Builder(this).setView(view).show();
+
+                helper.pegaBotao().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlunoDao dao = new AlunoDao(ListaAlunosActivity.this);
+                        if(helper.devolveBusca() != null) {
+                            final List<Aluno> busca = dao.busca(helper.devolveBusca());
+                            dao.close();
+                            if (busca.size() > 0) {
+                                passaPesquisa((Serializable) busca);
+                                alertDialog.dismiss();
+                            } else {
+                                helper.mostraSemResultado();
+                            }
+                        }
+                    }
+                });
+
+                return false;
 
             case R.id.menu_prova:
                 Intent provas = new Intent(this, ProvasActivity.class);
@@ -154,5 +182,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void passaPesquisa(Serializable busca) {
+        Intent intent = new Intent(ListaAlunosActivity.this, BuscaActivity.class);
+        intent.putExtra("alunos", busca);
+        startActivity(intent);
+
     }
 }
