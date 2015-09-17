@@ -17,7 +17,7 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return id +" - " + nome;
+        return id + " - " + nome;
     }
 
     public Long getId() {

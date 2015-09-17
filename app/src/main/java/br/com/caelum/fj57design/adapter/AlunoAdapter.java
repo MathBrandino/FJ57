@@ -2,6 +2,7 @@ package br.com.caelum.fj57design.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -70,10 +71,20 @@ public class AlunoAdapter extends BaseAdapter {
             bm = BitmapFactory.decodeResource(activity.getResources(), R.drawable.user);
         }
 
-        bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
+        try {
+            bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
+
+        } catch (NullPointerException e) {
+            Log.d("Exception", e.toString());
+            bm = BitmapFactory.decodeResource(activity.getResources(), R.drawable.user);
+
+            bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
+
+        }
 
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         foto.setImageBitmap(bm);
+
 
         return view;
     }

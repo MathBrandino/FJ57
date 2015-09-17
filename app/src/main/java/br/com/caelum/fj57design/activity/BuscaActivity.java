@@ -28,7 +28,7 @@ public class BuscaActivity extends AppCompatActivity {
         alunos = new ArrayList<>();
         Intent intent = getIntent();
 
-        if(intent.hasExtra("alunos")){
+        if (intent.hasExtra("alunos")) {
             alunos = (List<Aluno>) intent.getSerializableExtra("alunos");
         }
 

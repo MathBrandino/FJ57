@@ -4,25 +4,25 @@
     tools:context=".ListaAlunosActivity">
 
     <item
-        android:title="Busca"
-        android:icon="@android:drawable/ic_search_category_default"
         android:id="@+id/busca"
-        app:showAsAction="always"/>
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="Busca"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/menu_prova"
-        android:title="Provas"
         android:icon="@android:drawable/ic_menu_slideshow"
+        android:title="Provas"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_media"
-        android:title="Media"
         android:icon="@android:drawable/ic_menu_upload"
+        android:title="Media"
         app:showAsAction="always" />
     <item
         android:id="@+id/menu_lista_mapa"
-        android:title="Mapa"
         android:icon="@android:drawable/ic_dialog_map"
+        android:title="Mapa"
         app:showAsAction="ifRoom" />
 
 </menu>

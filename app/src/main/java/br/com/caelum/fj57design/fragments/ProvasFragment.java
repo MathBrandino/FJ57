@@ -31,7 +31,7 @@ public class ProvasFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.provas_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_provas, container, false);
 
         listaProvas = (ListView) view.findViewById(R.id.lista_provas);
 
@@ -65,8 +65,6 @@ public class ProvasFragment extends Fragment {
         return view;
 
     }
-
-
 
 
     private void mudaFragment(Prova prova) {
