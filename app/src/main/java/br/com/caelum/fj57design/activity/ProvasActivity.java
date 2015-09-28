@@ -33,6 +33,4 @@ public class ProvasActivity extends AppCompatActivity {
     public boolean isTablet() {
         return getResources().getBoolean(R.bool.isTablet);
     }
-
-
 }

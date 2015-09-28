@@ -19,28 +19,27 @@ import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.activity.ProvasActivity;
 import br.com.caelum.fj57design.modelo.Prova;
 
-
 /**
  * Created by matheus on 14/09/15.
  */
 public class ProvasFragment extends Fragment {
 
     private ListView listaProvas;
-    private Prova prova;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_provas, container, false);
 
-        listaProvas = (ListView) view.findViewById(R.id.lista_provas);
+        listaProvas =(ListView) view.findViewById(R.id.lista_provas);
 
         List<Prova> provas = new ArrayList<>();
 
         Prova p1 = new Prova("Java", "07/02/2016");
-        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo", "Herança", "Composição", "Encapsulamento"));
+        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo", "Herança", "Composição", "Encapsulamento", "Assinatura","Interface"));
         Prova p2 = new Prova("Android", "08/02/2016");
-        p2.setTopicos(Arrays.asList("Views", "AsyncTask", "Activity", "ClickListener", "Fragments", "Espresso"));
+        p2.setTopicos(Arrays.asList("Views", "AsyncTask", "Activity", "Click Listener", "Fragments", "Espresso"));
 
         Prova p3 = new Prova("Java para Web", "09/02/2016");
         p3.setTopicos(Arrays.asList("Servlet", "JSF", "Unit Tests", "JPA", "Spring", "Hibernate"));
@@ -56,9 +55,9 @@ public class ProvasFragment extends Fragment {
         listaProvas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                prova = (Prova) listaProvas.getItemAtPosition(position);
+                Prova provaSelecionada = (Prova) listaProvas.getItemAtPosition(position);
 
-                mudaFragment(prova);
+                mudaFragment(provaSelecionada);
             }
         });
 
@@ -66,11 +65,10 @@ public class ProvasFragment extends Fragment {
 
     }
 
-
-    private void mudaFragment(Prova prova) {
+    private void mudaFragment(Prova provaSelecionada) {
 
         Bundle arguments = new Bundle();
-        arguments.putSerializable("prova", prova);
+        arguments.putSerializable("prova", provaSelecionada);
 
         DetalhesFragment detalhesFragment = new DetalhesFragment();
         detalhesFragment.setArguments(arguments);

@@ -1,9 +1,7 @@
 package br.com.caelum.fj57design.fragments;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.modelo.Prova;
-
 /**
  * Created by matheus on 14/09/15.
  */
@@ -30,18 +27,20 @@ public class DetalhesFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_prova_detalhada, container, false);
 
-        materia = (TextView) view.findViewById(R.id.detalhe_prova_materia);
-        data = (TextView) view.findViewById(R.id.detalhe_prova_data);
-        topicos = (ListView) view.findViewById(R.id.lista_provas_detalhes);
-
+        encontraViews(view);
 
         if (getArguments() != null) {
             prova = (Prova) getArguments().getSerializable("prova");
             populaDetalhes(materia, data, topicos);
         }
 
-
         return view;
+    }
+
+    private void encontraViews(View view) {
+        materia = (TextView) view.findViewById(R.id.detalhe_prova_materia);
+        data = (TextView) view.findViewById(R.id.detalhe_prova_data);
+        topicos = (ListView) view.findViewById(R.id.lista_provas_detalhes);
     }
 
     private void populaDetalhes(TextView materia, TextView data, ListView topicos) {
@@ -52,7 +51,4 @@ public class DetalhesFragment extends Fragment {
 
         topicos.setAdapter(adapter);
     }
-
-
-
 }

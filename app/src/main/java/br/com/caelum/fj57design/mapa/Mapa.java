@@ -42,6 +42,7 @@ public class Mapa extends SupportMapFragment {
             @Override
             public void onMapReady(GoogleMap map) {
 
+                map.clear();
                 for (Aluno aluno : alunos) {
 
                     if (!aluno.getEndereco().trim().isEmpty()) {

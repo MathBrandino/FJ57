@@ -17,7 +17,6 @@ import br.com.caelum.fj57design.modelo.Aluno;
  */
 public class FormularioHelper {
 
-    private FormularioActivity activity;
     private ImageView foto;
     private EditText nome;
     private FloatingActionButton camera;
@@ -29,7 +28,6 @@ public class FormularioHelper {
     private Aluno aluno;
 
     public FormularioHelper(FormularioActivity activity) {
-        this.activity = activity;
 
         foto = (ImageView) activity.findViewById(R.id.formulario_foto);
         nome = (EditText) activity.findViewById(R.id.formulario_nome);
@@ -44,12 +42,12 @@ public class FormularioHelper {
 
     public Aluno pegaAlunoFormulario() {
 
-        aluno.setNome(nome.getText().toString());
-        aluno.setEndereco(endereco.getText().toString());
-        aluno.setSite(site.getText().toString());
-        aluno.setTelefone(telefone.getText().toString());
+        aluno.setNome(nome.getText().toString().trim());
+        aluno.setEndereco(endereco.getText().toString().trim());
+        aluno.setSite(site.getText().toString().trim());
+        aluno.setTelefone(telefone.getText().toString().trim());
         aluno.setCaminhoFoto((String) foto.getTag());
-        aluno.setNota(nota.getRating());
+        aluno.setNota(nota.getRating() * 2);
 
         return aluno;
     }
@@ -61,7 +59,7 @@ public class FormularioHelper {
         telefone.setText(aluno.getTelefone());
         endereco.setText(aluno.getEndereco());
         site.setText(aluno.getSite());
-        nota.setRating((float) aluno.getNota());
+        nota.setRating((float) aluno.getNota() /2);
 
         if (aluno.getCaminhoFoto() != null) {
             carregaFoto(aluno.getCaminhoFoto());

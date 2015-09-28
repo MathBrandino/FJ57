@@ -39,55 +39,59 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
     @Override
     public boolean onActionItemClicked(android.support.v7.view.ActionMode mode, MenuItem item) {
 
-        switch (item.getItemId()) {
+        try {
 
-            case R.id.menu_deletar:
+            switch (item.getItemId()) {
 
-                AlunoDao dao = new AlunoDao(activity);
-                dao.deleta(aluno);
-                dao.close();
-                activity.carregaLista();
+                case R.id.menu_deletar:
 
-                return true;
+                    AlunoDao dao = new AlunoDao(activity);
+                    dao.deleta(aluno);
+                    dao.close();
+                    activity.carregaLista();
+                    return false;
 
-            case R.id.menu_mapa:
+                case R.id.menu_mapa:
 
-                Intent mapa = new Intent(Intent.ACTION_VIEW);
+                    Intent mapa = new Intent(Intent.ACTION_VIEW);
 
-                mapa.setData(Uri.parse("geo:0,0?z=14&q=" + Uri.encode(aluno.getEndereco())));
-                item.setIntent(mapa);
+                    mapa.setData(Uri.parse("geo:0,0?z=14&q=" + Uri.encode(aluno.getEndereco())));
+                    item.setIntent(mapa);
 
-                return false;
+                    return false;
 
-            case R.id.menu_ligar:
+                case R.id.menu_ligar:
 
-                Intent ligar = new Intent(Intent.ACTION_CALL);
-                ligar.setData(Uri.parse("tel:" + aluno.getTelefone()));
-                item.setIntent(ligar);
+                    Intent ligar = new Intent(Intent.ACTION_CALL);
+                    ligar.setData(Uri.parse("tel:" + aluno.getTelefone()));
+                    item.setIntent(ligar);
 
-                return false;
+                    return false;
 
-            case R.id.menu_mensagem:
+                case R.id.menu_mensagem:
 
-                Intent mensagem = new Intent(Intent.ACTION_SEND);
-                mensagem.setType("text/*");
-                mensagem.putExtra(Intent.EXTRA_SUBJECT, "APP Caelum");
-                mensagem.putExtra(Intent.EXTRA_TEXT, "Sua nota é :" + aluno.getNota());
-                item.setIntent(Intent.createChooser(mensagem, "Escolha por gentileza"));
+                    Intent mensagem = new Intent(Intent.ACTION_SEND);
+                    mensagem.setType("text/*");
+                    mensagem.putExtra(Intent.EXTRA_SUBJECT, "APP Caelum");
+                    mensagem.putExtra(Intent.EXTRA_TEXT, "Sua nota é :" + aluno.getNota());
+                    item.setIntent(Intent.createChooser(mensagem, "Escolha por gentileza"));
 
-                return false;
+                    return false;
 
-            case R.id.menu_site:
+                case R.id.menu_site:
 
-                Intent site = new Intent(Intent.ACTION_VIEW);
-                site.setData(Uri.parse("http:" + aluno.getSite()));
-                item.setIntent(site);
-                return false;
+                    Intent site = new Intent(Intent.ACTION_VIEW);
+                    site.setData(Uri.parse("http:" + aluno.getSite()));
+                    item.setIntent(site);
+                    return false;
 
-            default:
+                default:
 
-                return true;
+                    return true;
+            }
 
+        } finally {
+            mode.finish();
         }
     }
 

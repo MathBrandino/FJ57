@@ -28,6 +28,7 @@ public class Configurador implements GoogleApiClient.ConnectionCallbacks {
 
     @Override
     public void onConnectionSuspended(int i) {
+        localizacao.cancela();
 
     }
 }
