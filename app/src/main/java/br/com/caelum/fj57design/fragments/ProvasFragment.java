@@ -32,12 +32,12 @@ public class ProvasFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_provas, container, false);
 
-        listaProvas =(ListView) view.findViewById(R.id.lista_provas);
+        listaProvas = (ListView) view.findViewById(R.id.lista_provas);
 
         List<Prova> provas = new ArrayList<>();
 
         Prova p1 = new Prova("Java", "07/02/2016");
-        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo", "Herança", "Composição", "Encapsulamento", "Assinatura","Interface"));
+        p1.setTopicos(Arrays.asList("Atributos", "Métodos", "Polimorfismo", "Herança", "Composição", "Encapsulamento", "Assinatura", "Interface"));
         Prova p2 = new Prova("Android", "08/02/2016");
         p2.setTopicos(Arrays.asList("Views", "AsyncTask", "Activity", "Click Listener", "Fragments", "Espresso"));
 

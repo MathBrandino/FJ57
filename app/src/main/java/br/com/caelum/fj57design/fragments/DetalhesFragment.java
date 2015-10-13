@@ -1,4 +1,5 @@
 package br.com.caelum.fj57design.fragments;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.modelo.Prova;
+
 /**
  * Created by matheus on 14/09/15.
  */

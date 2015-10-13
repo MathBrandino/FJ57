@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -114,12 +113,12 @@ public class AlunoDao extends SQLiteOpenHelper {
         return false;
     }
 
-    public List<Aluno> busca(String nome){
-        String sql = "Select * from "+ TABELA + " where nome like ?  ";
+    public List<Aluno> busca(String nome) {
+        String sql = "Select * from " + TABELA + " where nome like ?  ";
         List<Aluno> alunos = new ArrayList<>();
 
-        String[] nomes = { nome };
-        Cursor cursor = getReadableDatabase().rawQuery(sql,nomes );
+        String[] nomes = {nome};
+        Cursor cursor = getReadableDatabase().rawQuery(sql, nomes);
 
         while (cursor.moveToNext()) {
             Aluno aluno = new Aluno();

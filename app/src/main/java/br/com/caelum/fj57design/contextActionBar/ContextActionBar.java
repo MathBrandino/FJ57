@@ -63,8 +63,9 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                 case R.id.menu_ligar:
 
                     Intent ligar = new Intent(Intent.ACTION_CALL);
-                    ligar.setData(Uri.parse("tel:" + aluno.getTelefone()));
-                    item.setIntent(ligar);
+                    Uri uri = Uri.parse("tel:" + aluno.getTelefone());
+                    ligar.setData(uri);
+                    activity.startActivity(ligar);
 
                     return false;
 

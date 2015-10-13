@@ -7,6 +7,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -23,7 +24,6 @@ import br.com.caelum.fj57design.modelo.Aluno;
 public class Mapa extends SupportMapFragment {
     private List<Aluno> alunos;
     private AtualizadorDeLocalizacao localizacao;
-
 
     @Override
     public void onResume() {
@@ -50,18 +50,16 @@ public class Mapa extends SupportMapFragment {
                         List<LatLng> list = new ArrayList<LatLng>();
                         list.add(latLng);
                         list.add(lng[0]);
+                        map.addCircle(new CircleOptions().center(latLng).radius(30).fillColor(Color.BLUE));
                         map.addPolyline(new PolylineOptions().color(Color.BLUE).addAll(list));
                         map.addMarker(new MarkerOptions().title(aluno.getNome()).position(latLng).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
                         lng[0] = latLng;
                     }
-
                     new AtualizadorDeLocalizacao(getActivity(), Mapa.this);
 
                 }
             }
         });
-
-
     }
 
     public void localizaNoMapa(final LatLng latLng) {

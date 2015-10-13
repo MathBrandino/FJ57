@@ -51,7 +51,7 @@ public class AlunoAdapter extends BaseAdapter {
         View view;
 
         if (convertView == null) {
-            view = View.inflate(activity, R.layout.item, null);
+            view = activity.getLayoutInflater().inflate(R.layout.item, parent, false);
         } else {
             view = convertView;
         }

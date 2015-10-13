@@ -15,6 +15,7 @@ public class WebClient {
 
     public String post(String json) {
         try {
+
             URL url = new URL("https://www.caelum.com.br/mobile");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -29,8 +30,8 @@ public class WebClient {
             saida.println(json);
 
             connection.connect();
-
             String resposta = new Scanner(connection.getInputStream()).next();
+
 
             return resposta;
         } catch (MalformedURLException e) {

@@ -28,19 +28,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:textStyle="bold"
+                    android:textColor="#FFF"
                     android:textSize="20sp"
-                    android:textColor="#FFF" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/detalhe_prova_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="13dp"
-                    android:textStyle="italic"
                     android:gravity="center"
-                    android:textColor="#FFF" />
+                    android:textColor="#FFF"
+                    android:textSize="13dp"
+                    android:textStyle="italic" />
             </TableRow>
         </TableLayout>
 

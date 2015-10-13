@@ -34,11 +34,11 @@ public class EnviaDadosServidor extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(String media) {
+        super.onPostExecute(media);
 
         progressDialog.dismiss();
-        Toast.makeText(context, s, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, media, Toast.LENGTH_LONG).show();
     }
 
     @Override

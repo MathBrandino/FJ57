@@ -59,7 +59,7 @@ public class FormularioHelper {
         telefone.setText(aluno.getTelefone());
         endereco.setText(aluno.getEndereco());
         site.setText(aluno.getSite());
-        nota.setRating((float) aluno.getNota() /2);
+        nota.setRating((float) aluno.getNota() / 2);
 
         if (aluno.getCaminhoFoto() != null) {
             carregaFoto(aluno.getCaminhoFoto());
@@ -77,6 +77,7 @@ public class FormularioHelper {
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         foto.setImageBitmap(bm);
         foto.setTag(caminhoFoto);
+        foto.setRotation(90);
 
     }
 

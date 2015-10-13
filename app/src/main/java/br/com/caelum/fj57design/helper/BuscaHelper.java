@@ -3,7 +3,6 @@ package br.com.caelum.fj57design.helper;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.EditText;
 
 import br.com.caelum.fj57design.R;
@@ -25,22 +24,23 @@ public class BuscaHelper {
         actionButton = (FloatingActionButton) view.findViewById(R.id.buscador);
     }
 
-    private boolean validaBusca(){
-        if(busca.getText().toString().trim().isEmpty()){
+    private boolean validaBusca() {
+        if (busca.getText().toString().trim().isEmpty()) {
             TextInputLayout inputLayout = (TextInputLayout) busca.getParent();
             inputLayout.setError("Busca não pode ser vazia");
             return false;
         }
         return true;
     }
-    public String devolveBusca(){
-        if(validaBusca()) {
+
+    public String devolveBusca() {
+        if (validaBusca()) {
             return busca.getText().toString().trim();
         }
         return null;
     }
 
-    public FloatingActionButton pegaBotao(){
+    public FloatingActionButton pegaBotao() {
         return actionButton;
     }
 

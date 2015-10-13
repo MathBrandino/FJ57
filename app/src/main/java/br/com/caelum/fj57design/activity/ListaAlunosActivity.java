@@ -10,9 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,7 +29,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     private List<Aluno> alunos;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
@@ -48,6 +46,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
             }
         });
+
 
         listaAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -71,9 +70,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno aluno = (Aluno) parent.getItemAtPosition(position);
 
-                ContextActionBar actionBar = new ContextActionBar(ListaAlunosActivity.this, aluno);
-
-                startSupportActionMode(actionBar);
+                startSupportActionMode(new ContextActionBar(ListaAlunosActivity.this, aluno));
                 return true;
             }
         });
@@ -111,6 +108,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
+
         switch (id) {
 
             case R.id.busca:
@@ -122,7 +120,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         AlunoDao dao = new AlunoDao(ListaAlunosActivity.this);
-                        if(helper.devolveBusca() != null) {
+                        if (helper.devolveBusca() != null) {
                             final List<Aluno> busca = dao.busca(helper.devolveBusca());
                             dao.close();
                             if (busca.size() > 0) {
@@ -146,8 +144,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
             case R.id.menu_media:
 
                 new EnviaDadosServidor(this).execute(); // MANEIRA CORRETA DE SER FEITO
+/*
 
-                /*new Thread(){
+                final String[] resposta = {null};
+                new Thread(){
                     @Override
                     public void run() {
                         AlunoDao dao = new AlunoDao(ListaAlunosActivity.this);
@@ -160,15 +160,20 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
                         WebClient webClient = new WebClient();
 
-                        String resposta = webClient.post(json);
+                        resposta[0] =  webClient.post(json);
 
-                        Log.d("Resposta", resposta);
+//                        Toast.makeText(ListaAlunosActivity.this, resposta[0], Toast.LENGTH_LONG).show(); //GERANDO A EXCEPTION !!!
 
-                        //Toast.makeText(ListaAlunosActivity.this, resposta, Toast.LENGTH_LONG).show(); //GERANDO A EXCEPTION !!!
+
+                        Log.d("Resposta", resposta[0]);
+
 
                     }
-                }.start();*/
+                }.start();
 
+                Toast.makeText(ListaAlunosActivity.this, resposta[0], Toast.LENGTH_LONG).show(); //Vazio dessa forma
+
+*/
 
                 return false;
 
