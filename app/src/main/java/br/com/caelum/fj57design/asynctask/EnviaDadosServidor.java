@@ -3,12 +3,13 @@ package br.com.caelum.fj57design.asynctask;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.caelum.fj57design.Dao.AlunoDao;
-import br.com.caelum.fj57design.converter.AlunoConverter;
+import br.com.caelum.fj57design.converter.AlunoConverterGson;
 import br.com.caelum.fj57design.modelo.Aluno;
 import br.com.caelum.fj57design.servidor.WebClient;
 
@@ -48,13 +49,12 @@ public class EnviaDadosServidor extends AsyncTask<String, Void, String> {
         List<Aluno> alunos = dao.pegaAlunos();
         dao.close();
 
-        AlunoConverter converter = new AlunoConverter();
-
-        String json = converter.toJson(alunos);
-
+        // AlunoConverter converter = new AlunoConverter();
+        AlunoConverterGson converter = new AlunoConverterGson();
+        String gson = converter.toJson(alunos);
         WebClient webClient = new WebClient();
-
-        String resposta = webClient.post(json);
+        Log.i("g", gson);
+        String resposta = webClient.post(gson);
 
         //String resp = new WebClient().post(new AlunoConverter().toJson(alunos));
 

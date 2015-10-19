@@ -143,6 +143,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
             case R.id.menu_media:
 
+
                 new EnviaDadosServidor(this).execute(); // MANEIRA CORRETA DE SER FEITO
 /*
 
