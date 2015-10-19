@@ -14,8 +14,7 @@ import br.com.caelum.fj57design.mapa.Mapa;
 /**
  * Created by matheus on 17/09/15.
  */
-public class
-        AtualizadorDeLocalizacao implements LocationListener {
+public class AtualizadorDeLocalizacao implements LocationListener {
 
     private Mapa mapFragment;
     private GoogleApiClient client;

@@ -49,14 +49,11 @@ public class EnviaDadosServidor extends AsyncTask<String, Void, String> {
         List<Aluno> alunos = dao.pegaAlunos();
         dao.close();
 
-        // AlunoConverter converter = new AlunoConverter();
         AlunoConverterGson converter = new AlunoConverterGson();
         String gson = converter.toJson(alunos);
         WebClient webClient = new WebClient();
-        Log.i("g", gson);
         String resposta = webClient.post(gson);
 
-        //String resp = new WebClient().post(new AlunoConverter().toJson(alunos));
 
         return resposta;
     }
