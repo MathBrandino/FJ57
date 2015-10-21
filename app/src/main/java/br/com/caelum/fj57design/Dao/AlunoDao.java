@@ -39,6 +39,7 @@ public class AlunoDao extends SQLiteOpenHelper {
 
     }
 
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
@@ -114,7 +115,7 @@ public class AlunoDao extends SQLiteOpenHelper {
     }
 
     public List<Aluno> busca(String nome) {
-        String sql = "Select * from " + TABELA + " where nome like ?  ";
+        String sql = "Select * from " + TABELA + " where nome = ?  ";
         List<Aluno> alunos = new ArrayList<>();
 
         String[] nomes = {nome};
@@ -128,7 +129,7 @@ public class AlunoDao extends SQLiteOpenHelper {
             aluno.setCaminhoFoto(cursor.getString(cursor.getColumnIndex("caminhoFoto")));
             aluno.setEndereco(cursor.getString(cursor.getColumnIndex("endereco")));
             aluno.setSite(cursor.getString(cursor.getColumnIndex("site")));
-            aluno.setNota(cursor.getDouble(cursor.getColumnIndex("nota  ")));
+            aluno.setNota(cursor.getDouble(cursor.getColumnIndex("nota")));
 
             alunos.add(aluno);
         }

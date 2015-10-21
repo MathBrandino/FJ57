@@ -28,11 +28,14 @@
         android:icon="@mipmap/ic_launcher"
         android:label="Caelum "
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.BuscaActivity" />
-        <activity android:name=".activity.MostraAlunoActivity" />
+        <activity android:name=".activity.BuscaActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Busca"/>
+        <activity android:name=".activity.MostraAlunoActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Mapa Alunos"/>
         <activity
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".activity.ListaAlunosActivity"
-            android:label="@string/app_name">
+            android:label="Lista Alunos">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,10 +43,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ProvasActivity" />
+        <activity android:name=".activity.ProvasActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Provas"/>
 
         <activity
             android:name=".activity.FormularioActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="Formulário"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <receiver
