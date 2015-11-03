@@ -25,7 +25,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/caelum"
         android:label="Caelum "
         android:theme="@style/AppTheme">
         <activity android:name=".activity.BuscaActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
@@ -35,7 +35,7 @@
         <activity
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:name=".activity.ListaAlunosActivity"
-            android:label="Lista Alunos">
+            android:label="Cadastro Caelum">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -87,6 +87,7 @@ public class FormularioHelper {
     public void carregaFoto(String caminhoFoto) {
         
         Bitmap bm = BitmapFactory.decodeFile(caminhoFoto);
+        bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
         foto.setScaleType(ImageView.ScaleType.FIT_XY);
         foto.setImageBitmap(bm);
         foto.setRotation(90);

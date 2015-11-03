@@ -1,6 +1,7 @@
 package br.com.caelum.fj57design.activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,11 +14,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.Serializable;
+import java.security.Permission;
+import java.security.Permissions;
 import java.util.List;
 
 import br.com.caelum.fj57design.Dao.AlunoDao;
+import br.com.caelum.fj57design.Manifest;
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.adapter.AlunoAdapter;
 import br.com.caelum.fj57design.asynctask.EnviaDadosServidor;
@@ -36,7 +41,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         listaAlunos = (ListView) findViewById(R.id.lista_alunos);
 
         final FloatingActionButton botaoAdicionar = (FloatingActionButton) findViewById(R.id.botao_adicionar);
@@ -198,6 +202,19 @@ public class ListaAlunosActivity extends AppCompatActivity {
         Intent intent = new Intent(ListaAlunosActivity.this, BuscaActivity.class);
         intent.putExtra("alunos", busca);
         startActivity(intent);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if ( requestCode == 123 ){
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, "Fazendo servico", Toast.LENGTH_LONG).show();
+            }
+        }
+
 
     }
 }

@@ -1,7 +1,12 @@
 package br.com.caelum.fj57design.contextActionBar;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -9,6 +14,8 @@ import br.com.caelum.fj57design.Dao.AlunoDao;
 import br.com.caelum.fj57design.R;
 import br.com.caelum.fj57design.activity.ListaAlunosActivity;
 import br.com.caelum.fj57design.modelo.Aluno;
+
+import static android.support.v4.content.PermissionChecker.checkSelfPermission;
 
 /**
  * Created by matheus on 09/09/15.
@@ -36,6 +43,7 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
         return false;
     }
 
+    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public boolean onActionItemClicked(android.support.v7.view.ActionMode mode, MenuItem item) {
 
@@ -65,6 +73,11 @@ public class ContextActionBar implements android.support.v7.view.ActionMode.Call
                     Intent ligar = new Intent(Intent.ACTION_CALL);
                     Uri uri = Uri.parse("tel:" + aluno.getTelefone());
                     ligar.setData(uri);
+                    if (checkSelfPermission(activity , Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        activity.requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 123);
+
+                        return false;
+                    }
                     activity.startActivity(ligar);
 
                     return false;

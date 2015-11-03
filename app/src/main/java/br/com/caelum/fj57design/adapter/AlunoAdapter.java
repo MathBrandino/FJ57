@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.List;
 
 import br.com.caelum.fj57design.R;
@@ -47,11 +48,11 @@ public class AlunoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Aluno aluno = (Aluno) getItem(position);
         View view;
 
-        if (convertView == null) {
+        if( convertView == null) {
             view = activity.getLayoutInflater().inflate(R.layout.item, parent, false);
+
         } else {
             view = convertView;
         }
@@ -60,31 +61,20 @@ public class AlunoAdapter extends BaseAdapter {
         TextView site = (TextView) view.findViewById(R.id.item_site);
         ImageView foto = (ImageView) view.findViewById(R.id.item_foto);
 
+        Aluno aluno = (Aluno) getItem(position);
         nome.setText(aluno.getNome());
         site.setText(aluno.getSite());
 
         Bitmap bm;
-
         if (aluno.getCaminhoFoto() != null) {
             bm = BitmapFactory.decodeFile(aluno.getCaminhoFoto());
         } else {
             bm = BitmapFactory.decodeResource(activity.getResources(), R.drawable.user);
         }
 
-        try {
-            bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
+        bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
 
-        } catch (NullPointerException e) {
-            Log.d("Exception", e.toString());
-            bm = BitmapFactory.decodeResource(activity.getResources(), R.drawable.user);
-
-            bm = Bitmap.createScaledBitmap(bm, 100, 100, true);
-
-        }
-
-        foto.setScaleType(ImageView.ScaleType.FIT_XY);
         foto.setImageBitmap(bm);
-
 
         return view;
     }

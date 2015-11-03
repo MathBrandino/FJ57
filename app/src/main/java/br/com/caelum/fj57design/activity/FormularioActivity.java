@@ -1,6 +1,8 @@
 package br.com.caelum.fj57design.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
@@ -78,6 +80,8 @@ public class FormularioActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == CODE) {
                 helper.carregaFoto(caminhoFoto);
+
+
 
             }
         }

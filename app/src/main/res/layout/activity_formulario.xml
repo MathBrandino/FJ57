@@ -40,7 +40,8 @@
                 android:layout_marginRight="10dp"
                 android:src="@drawable/camera"
                 app:backgroundTint="#FF0000"
-                app:fabSize="normal" />
+                app:fabSize="normal"
+                />
 
         </RelativeLayout>
 
