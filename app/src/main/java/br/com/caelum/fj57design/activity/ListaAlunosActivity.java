@@ -3,9 +3,13 @@ package br.com.caelum.fj57design.activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,20 +33,29 @@ import br.com.caelum.fj57design.adapter.AlunoAdapter;
 import br.com.caelum.fj57design.asynctask.EnviaDadosServidor;
 import br.com.caelum.fj57design.contextActionBar.ContextActionBar;
 import br.com.caelum.fj57design.helper.BuscaHelper;
+import br.com.caelum.fj57design.listener.ListenerNavigation;
 import br.com.caelum.fj57design.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
     private ListView listaAlunos;
     private List<Aluno> alunos;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle iconeMenu;
+    private DrawerLayout drawerLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+        Toolbar toolbar = criaToolbar();
+
         listaAlunos = (ListView) findViewById(R.id.lista_alunos);
+
+        criaEPopulaNavigationView();
+
+        populaDrawerLayout(toolbar);
 
         final FloatingActionButton botaoAdicionar = (FloatingActionButton) findViewById(R.id.botao_adicionar);
 
@@ -82,6 +96,29 @@ public class ListaAlunosActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+    }
+
+    private void populaDrawerLayout(Toolbar toolbar) {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+
+        iconeMenu = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0,0);
+
+        drawerLayout.setDrawerListener(iconeMenu);
+    }
+
+    @NonNull
+    private Toolbar criaToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(android.R.drawable.ic_menu_info_details);
+        setSupportActionBar(toolbar);
+        return toolbar;
+    }
+
+    private void criaEPopulaNavigationView() {
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(new ListenerNavigation(this));
 
     }
 
@@ -143,55 +180,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
                 return false;
 
-            case R.id.menu_prova:
-                Intent provas = new Intent(this, ProvasActivity.class);
-                startActivity(provas);
-
-                return false;
-
-            case R.id.menu_media:
-
-
-                new EnviaDadosServidor(this).execute(); // MANEIRA CORRETA DE SER FEITO
-/*
-
-                final String[] resposta = {null};
-                new Thread(){
-                    @Override
-                    public void run() {
-                        AlunoDao dao = new AlunoDao(ListaAlunosActivity.this);
-                        List<Aluno> alunos = dao.pegaAlunos();
-                        dao.close();
-
-                        AlunoConverter converter = new AlunoConverter();
-
-                        String json = converter.toJson(alunos);
-
-                        WebClient webClient = new WebClient();
-
-                        resposta[0] =  webClient.post(json);
-
-//                        Toast.makeText(ListaAlunosActivity.this, resposta[0], Toast.LENGTH_LONG).show(); //GERANDO A EXCEPTION !!!
-
-
-                        Log.d("Resposta", resposta[0]);
-
-
-                    }
-                }.start();
-
-                Toast.makeText(ListaAlunosActivity.this, resposta[0], Toast.LENGTH_LONG).show(); //Vazio dessa forma
-
-*/
-
-                return false;
-
-            case R.id.menu_lista_mapa:
-                Intent intent = new Intent(this, MostraAlunoActivity.class);
-                intent.putExtra("alunos", (Serializable) alunos);
-                startActivity(intent);
-
-                return false;
 
         }
 

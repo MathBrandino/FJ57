@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:id="@+id/enviar_notas"
+            android:title="Envia notas"
+            android:icon="@android:drawable/ic_menu_upload"/>
+        <item android:id="@+id/provas"
+            android:title="Provas"
+            android:icon="@android:drawable/ic_dialog_dialer"/>
+        <item android:id="@+id/mapa_alunos"
+            android:title="Mapa de Alunos"
+            android:icon="@android:drawable/ic_menu_myplaces"/>
+    </group>
+
+</menu>

@@ -9,20 +9,5 @@
         android:title="Busca"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/menu_prova"
-        android:icon="@android:drawable/ic_menu_slideshow"
-        android:title="Provas"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/menu_media"
-        android:icon="@android:drawable/ic_menu_upload"
-        android:title="Media"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/menu_lista_mapa"
-        android:icon="@android:drawable/ic_dialog_map"
-        android:title="Mapa"
-        app:showAsAction="ifRoom" />
 
 </menu>
